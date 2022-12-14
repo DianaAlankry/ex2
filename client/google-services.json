@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "95101927644",
+    "project_id": "efratandyealproject",
+    "storage_bucket": "efratandyealproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:95101927644:android:d2194bcd33b75b4c75b419",
+        "android_client_info": {
+          "package_name": "com.example.myfirebaseappbbwomen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "95101927644-seikrreak52eg3vh89id9r8dhjt5vvpq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOvCCSMaTTmfb4OXcm6P_LmTe6jb0PaOY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "95101927644-seikrreak52eg3vh89id9r8dhjt5vvpq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
