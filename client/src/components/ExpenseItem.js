@@ -1,25 +1,31 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import ExpenseDate from './ExpenseDate';
 import './ExpenseItem.css'
 import Card from './UI/Card'
 
 function ExpenseItem(props) {
 
-    const [title, setTitle] = useState(props.title);
+    const [isAdded, setIsAdded] = useState(false);
 
-    const clickHandler = () => {
-        console.log('clicked!');
-        setTitle('clicked!');
+    const addHandler = () => {
+        props.handleAdd();
+        setIsAdded(true);
+    }
+
+    const removeHandler = () => {
+        props.handleRemove();
+        setIsAdded(false);
     }
 
     return (
         <Card className='expense-item'>
-            <ExpenseDate date={props.date} />
+            <ExpenseDate number={props.number}/>
             <div className="expense-item__description ">
-                <h2>{title}</h2>
-                <div className="expense-item__price"> {props.amount}</div>
+                <h2>{props.name}</h2>
+                <div className="expense-item__price"> {props.price}</div>
             </div>
-            <button onClick={clickHandler}> change title </button>
+            <button disabled={isAdded} onClick={addHandler}>Add to cart</button>
+            <button disabled={!isAdded} onClick={removeHandler}>Remove from cart</button>
         </Card>
     );
 }

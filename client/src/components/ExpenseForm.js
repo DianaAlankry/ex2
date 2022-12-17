@@ -1,41 +1,28 @@
-
 import './ExpenseForm.css'
-
-import './ExpenseForm.css'
-
-import React, { useEffect, useState } from 'react';
+import React, {useState} from 'react';
 
 
 const ExpenseForm = () => {
 
-    const [title, setTitle] = useState('');
-    const [amount, setAmount] = useState('');
-    const [date, setDate] = useState('');
-    const [number, setNumber] = useState('');
+    const [name, setName] = useState('');
+    const [price, setPrice] = useState('');
 
-    const titleChangeHandeler = (event) => {
-        console.log(event);
-        setTitle(event.target.value);
+    const nameChangeHandeler = (event) => {
+        setName(event.target.value);
     }
-    const AmountChangeHandeler = (event) => {
-        console.log(event.target.value);
-        setAmount(event.target.value);
-    }
-    const DateChangeHandeler = (event) => {
-        console.log(event.target.value);
-        setDate(event.target.value);
+    const priceChangeHandeler = (event) => {
+        setPrice(event.target.value);
     }
 
     const submitHandler = (event) => {
         event.preventDefault();
 
         const expenseData = {
-            title: title,
-            amount: amount,
-            /*  date: new Date(date)*/
+            name: name,
+            price: price,
         };
         fetch('http://localhost:3000/products/r', {
-            method: 'POST', // or 'PUT'
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -49,44 +36,27 @@ const ExpenseForm = () => {
                 console.error('Error:', error);
             });
 
-        setNumber(amount + 1);
-        console.log(expenseData);
-        setTitle('');
-        setAmount('');
-        setDate('');
-
+        setName('');
+        setPrice('');
     }
-
-    useEffect(() => {
-        fetch("http://localhost:3000/dogs")
-            .then((Response) => Response.json())
-            .then((data) => setTitle(data.number))
-            .catch((err) => console.log(err));
-    }, [number]);
 
     return (
         <form onSubmit={submitHandler}>
             <div className="new-expense__controls">
                 <div className="new-expense__control">
-                    <label>Title</label>
-                    <input type='text' value={title} onChange={titleChangeHandeler} />
+                    <label>Name</label>
+                    <input type='text' value={name} onChange={nameChangeHandeler}/>
                 </div>
                 <div className="new-expense__control">
-                    <label>Amount</label>
-                    <input type='number' min="0.01" step="0.01" value={amount} onChange={AmountChangeHandeler} />
+                    <label>Price</label>
+                    <input type='number' min="1" step="1" value={price} onChange={priceChangeHandeler}/>
                 </div>
-                <div className="new-expense__control">
-                    <label>Date</label>
-                    <input type='date' min="2019-01-01" max="2022-12-31" value={date} onChange={DateChangeHandeler} />
-                </div>
-
             </div>
             <div className="new-expense__actions">
-                <button type="submit">Add expense</button>
+                <button type="submit">Add game</button>
             </div>
         </form>
     );
-
 
 
 }
